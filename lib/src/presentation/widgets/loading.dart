@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:surah/src/config/constant/app_constants.dart';
+
+import '../../config/utils/utils.dart';
 
 
 void showLoading({required BuildContext context}) {
@@ -12,11 +15,11 @@ void showLoading({required BuildContext context}) {
         child: Container(
           alignment: AlignmentDirectional.center,
           decoration: const BoxDecoration(),
-          child: const Center(
+          child:  Center(
             child: SizedBox(
-              height: 70.0,
-              width: 70.0,
-              child: CircularProgressIndicator(),
+              height: 70.0 * height / figmaHeight,
+              width: 70.0 * width / figmaWidth,
+              child: const CircularProgressIndicator(),
             ),
           ),
         ),

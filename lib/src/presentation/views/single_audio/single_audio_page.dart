@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:surah/src/config/extension/size_extension.dart';
 import 'package:surah/src/config/utils/ui_utils.dart';
 import 'package:surah/src/config/utils/utils.dart';
@@ -5,7 +7,11 @@ import 'package:surah/src/data/models/quran_model.dart';
 import 'package:surah/src/presentation/blocs/audio_bloc/audio_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:surah/src/presentation/views/single_audio/widgets/surah_info.dart';
 import 'package:surah/src/presentation/views/single_audio/widgets/surah_item.dart';
+import 'package:surah/src/presentation/widgets/media_item.dart';
+
+import '../../../config/constant/app_constants.dart';
 
 class SingleAudioPage extends StatefulWidget {
   const SingleAudioPage({Key? key, required this.audioFiles}) : super(key: key);
@@ -44,6 +50,7 @@ class _SingleAudioPageState extends State<SingleAudioPage> {
             child: Column(
               children: [
                 // cover art, artist name, song name
+                SurahInfo(quranModel: widget.audioFiles[Utils.index]),
                 10.ph,
                 // start time, shuffle button, repeat button, end time
                 Row(
@@ -75,6 +82,8 @@ class _SingleAudioPageState extends State<SingleAudioPage> {
                 30.ph,
 
                 // linear bar
+
+
 
                 30.ph,
                 // previous song, pause play, skip next song

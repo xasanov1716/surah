@@ -12,11 +12,9 @@ class AudioPlayerService {
     audioPlayer = AudioPlayer();
   }
 
-
-
   Future<void> initAudioPlayer({required String url}) async {
     try {
-      await audioPlayer.setUrl('https://archive.org/details/best-quran-recitations-mp3-download-latest');
+      await audioPlayer.setUrl(url);
       await audioPlayer.load();
       Utils.isPlaying = true;
       play();
