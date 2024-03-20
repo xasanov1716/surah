@@ -15,10 +15,9 @@ class QuranInsertEvent extends SaveQuranEvent {
 
 class GetAllQuranEvent extends SaveQuranEvent {
 
-  final List<QuranModelSql> quranModel;
 
-  GetAllQuranEvent({required this.quranModel});
+  GetAllQuranEvent();
 
   @override
-  List<Object?> get props => [quranModel];
+  List<Object?> get props => [];
 }

@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:surah/src/data/models/audio_model_sql.dart';
 import 'package:surah/src/data/models/quran_model.dart';
+import 'package:surah/src/presentation/blocs/save_surah_bloc/save_surah_bloc.dart';
 import 'package:surah/src/presentation/cubits/download_cubit/download_cubit.dart';
 import 'package:surah/src/presentation/cubits/download_cubit/downloader_state.dart';
-
-
-
-
 
 void showMyDialog(BuildContext context, QuranModel audioFiles) {
   showDialog(
@@ -33,10 +30,19 @@ void showMyDialog(BuildContext context, QuranModel audioFiles) {
                               nameLat: audioFiles.nameLat!,
                               description: audioFiles.description!,
                               audio: audioFiles.audio!,
-                              countAyah:
-                              audioFiles.countAyah!,
+                              countAyah: audioFiles.countAyah!,
                               createLocation: audioFiles.createLocation!),
                           context: context);
+                      context.read<SaveQuranBloc>().add(QuranInsertEvent(
+                          quranModelSql: QuranModelSql(
+                              name: audioFiles.name!,
+                              author: audioFiles.author!,
+                              number: audioFiles.number!,
+                              nameLat: audioFiles.nameLat!,
+                              description: audioFiles.description!,
+                              audio: audioFiles.audio!,
+                              countAyah: audioFiles.countAyah!,
+                              createLocation: audioFiles.createLocation!)));
                     },
                     leading: Container(
                       decoration: const BoxDecoration(
@@ -65,25 +71,25 @@ void showMyDialog(BuildContext context, QuranModel audioFiles) {
                               ),
                             ),
                             Center(
-                              child: state.progress != 1.0 &&
-                                  state.progress == 0.0
-                                  ? const Icon(
-                                Icons.arrow_downward_rounded,
-                                color: Colors.white,
-                                size: 22,
-                              )
-                                  : state.progress != 1.0 &&
-                                  state.progress != 0.0
-                                  ? Text(
-                                "${(state.progress * 100).toInt()}%",
-                                style: const TextStyle(
-                                    color: Colors.white),
-                              )
-                                  : const Icon(
-                                Icons.description,
-                                color: Colors.white,
-                                size: 22,
-                              ),
+                              child:
+                                  state.progress != 1.0 && state.progress == 0.0
+                                      ? const Icon(
+                                          Icons.arrow_downward_rounded,
+                                          color: Colors.white,
+                                          size: 22,
+                                        )
+                                      : state.progress != 1.0 &&
+                                              state.progress != 0.0
+                                          ? Text(
+                                              "${(state.progress * 100).toInt()}%",
+                                              style: const TextStyle(
+                                                  color: Colors.white),
+                                            )
+                                          : const Icon(
+                                              Icons.description,
+                                              color: Colors.white,
+                                              size: 22,
+                                            ),
                             ),
                           ],
                         ),

@@ -1,15 +1,15 @@
 class AudioModelSqlFields {
-  static String id = '_id';
-  static String number = '_number';
-  static String name = '_name';
-  static String nameLat = '_nameLat';
-  static String countAyah = '_countAyah';
-  static String createLocation = '_createLocation';
-  static String author = '_author';
-  static String description = '_description';
-  static String audio = '_audio';
+  static String id = 'id';
+  static String number = 'number';
+  static String name = 'name';
+  static String nameLat = 'nameLat';
+  static String countAyah = 'countAyah';
+  static String createLocation = 'createLocation';
+  static String author = 'author';
+  static String description = 'description';
+  static String audio = 'audio';
 
-  static String tableName = 'Quran';
+  static String tableName = 'quran';
 }
 
 class QuranModelSql {
